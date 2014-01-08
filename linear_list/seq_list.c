@@ -5,6 +5,8 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 
 #include "seq_list.h"
 
@@ -33,7 +35,7 @@ init_list(seq_list *s_list,
     if (s_list->data == NULL)
         return false;
 
-    memset(s_list->data, 0, allocate_bytes);
+    memset(s_list->data, 0, ELEMENT_NUM_MAX * element_size);
     s_list->element_size = element_size;
     s_list->length = 0;
 
@@ -55,8 +57,8 @@ cleanup_list(seq_list *const s_list)
     if (s_list == NULL || s_list->data == NULL)
         return ;
 
-    memset(list->data, 0, list->length * list->element_size);
-    list->length = 0;
+    memset(s_list->data, 0, s_list->length * s_list->element_size);
+    s_list->length = 0;
 
     return ;
 }
@@ -99,7 +101,7 @@ insert_list_element( seq_list *const s_list,
         return false;
 
     /* Calculate insert location */
-    char *p_insert = (char *)s_list->data + (char *)(s_list->element_size * location);
+    char *p_insert = (char *) (s_list->data + (s_list->element_size * location));
 
     /* Element move backward */
     memcpy( p_insert + s_list->element_size, 
@@ -107,7 +109,7 @@ insert_list_element( seq_list *const s_list,
             (s_list->length - location) * s_list->element_size);
 
     /* Insert element */
-    memcpy(p_insert, element, element_size);
+    memcpy(p_insert, element, s_list->element_size);
 
     s_list->length++;
 
@@ -125,7 +127,7 @@ delete_list_element( seq_list *const s_list,
         return false;
 
     /* Calculate delete location and get element we want delete */
-    char *element = (char *)s_list->data + (char *)(s_list->element_size * location);
+    char *element = (char *) (s_list->data + (s_list->element_size * location));
 
     /* Element move forward */
     memcpy( element,
