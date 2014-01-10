@@ -9,9 +9,9 @@
  * any struct type.
  */
 typedef struct {
-    unsigned char *data;    /* store all data element */
-    int element_size;       
-    int length;             /* length of list */
+        unsigned char *data;    /* store all data element */
+        int element_size;       
+        int length;             /* length of list */
 } seq_list;
 
 #define ELEMENT_NUM_MAX (4096)

@@ -5,8 +5,8 @@
 
 .PHONY:all move clean
 
-SOURCE 	:= $(wildcard *.c)
-OBJS 	:= $(patsubst %.c,%.o,$(SOURCE))
+SOURCE	:= $(wildcard *.c)
+OBJS	:= $(patsubst %.c,%.o,$(SOURCE))
 
 all:$(OBJS) move
 
