@@ -1,13 +1,13 @@
-OBJDIR 	:= obj
-CC 		:= gcc
-MAKE 	:= make
-CFLAGS 	:= -fPIC -shared -Wall
+OBJDIR	:= obj
+CC 	:= gcc
+MAKE	:= make
+CFLAGS	:= -fPIC -shared -Wall
 
 # export above var.
 export
 
 # Get all subdir name that depth is 1, except $(exclude_dirs)
-subdir  = $(filter-out $(1),$(basename $(patsubst ./%,%,$(shell find . -maxdepth 1 -type d))))
+subdir = $(filter-out $(1),$(basename $(patsubst ./%,%,$(shell find . -maxdepth 1 -type d))))
 #subdir  = $(1)
 
 exclude_dirs 	 := unit_test obj
@@ -22,12 +22,11 @@ compile : $(ALL_COMPILE_DIRS)
 	@echo $(ALL_COMPILE_DIRS)
 	$(MAKE) -C $<
 	
-exclude_dirs := unit_test obj
-CLEAN_DIRS 	 := $(call subdir,$(exclude_dirs))
+exclude_dirs	:= unit_test
+CLEAN_DIRS	:= $(call subdir,$(exclude_dirs))
 
-clean: $(CLEAN_DIRS)
-	$(MAKE) -C $< clean
-
+clean:
+	for dir in $(CLEAN_DIRS);do $(MAKE) -C $$dir clean;done
 debug:
 	@echo $(shell find . -maxdepth 1 -type d)
 	@echo $(basename $(patsubst ./%,%,$(shell find . -maxdepth 1 -type d)))
