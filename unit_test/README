@@ -1,0 +1,20 @@
+单元测试相关说明:
+
+1.使用CUnit作为单元测试的框架.需要者请自行下载(http://sourceforge.net/projects/cunit/).
+2.使用XML的方式输出最终结果.对应到代码中就是使用Automated的方式.请自行前往官网学习使用(http://cunit.sourceforge.net/)
+3.本项目的整个单元测试框架简略表述如下:
+Test Registry(test_registry_project.c)
+|
++--Suit seq_list(顺序存储结构的测试suit: ut_linearlist/suit_seq_list.c)
+|         |
+|         +各个测试case(suit_seq_list.c中的各个测试case的代码)
+|
++--Suit chain_list(链式存储结构的测试suit: ut_linearlist/suit_chain_list.c)
+|         |
+|         +各个测试case(suit_chain_list.c中的各个测试case的代码)
+|
+*         *
+*         *
+*         *
+
+详细的请查看代码和代码中的注释说明.
