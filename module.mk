@@ -11,7 +11,7 @@ OBJS	:= $(patsubst %.c,%.o,$(SOURCE))
 all:$(OBJS) move
 
 $(OBJS):%.o:%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(INC) $(CFLAGS) -c $< -o $@ $(LFLAGS)
 
 move:
 	cp $(OBJS) ../$(OBJDIR)
