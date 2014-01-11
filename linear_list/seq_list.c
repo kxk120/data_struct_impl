@@ -22,9 +22,8 @@
  * 7. Destory list.             O(1)
  */
 
-bool
-init_list(seq_list *s_list,
-          const int element_size)
+bool init_list( seq_list *s_list,
+                const int element_size)
 {
         s_list = (seq_list *) malloc(sizeof(seq_list));
         if (s_list == NULL)
@@ -42,8 +41,7 @@ init_list(seq_list *s_list,
         return true;
 }
 
-int 
-get_list_len(seq_list *const s_list)
+int get_list_len(seq_list *const s_list)
 {
         if (s_list == NULL)
                 return -1;
@@ -51,8 +49,7 @@ get_list_len(seq_list *const s_list)
         return s_list->length;
 }
 
-void
-cleanup_list(seq_list *const s_list)
+void cleanup_list(seq_list *const s_list)
 {
         if (s_list == NULL || s_list->data == NULL)
                 return ;
@@ -63,10 +60,9 @@ cleanup_list(seq_list *const s_list)
         return ;
 }
 
-static bool 
-check_ins_del_func_param(seq_list *const s_list,
-                         const void *const element,
-                         const int location)
+static bool check_ins_del_func_param(seq_list *const s_list,
+                                const void *const element,
+                                const int location)
 {
         /* Check 2 params */
         if (s_list == NULL || element == NULL)
@@ -91,10 +87,9 @@ check_ins_del_func_param(seq_list *const s_list,
         return true;
 }
 
-bool
-insert_list_element(seq_list *const s_list,
-                    const void *const element,
-                    const int location)
+bool insert_list_element(seq_list *const s_list,
+                        const void *const element,
+                        const int location)
 {
         /* Check params */
         if (check_ins_del_func_param(s_list, element, location) == false)
@@ -116,9 +111,8 @@ insert_list_element(seq_list *const s_list,
         return true;
 }
 
-bool
-delete_list_element(seq_list *const s_list,
-                    const int location)
+bool delete_list_element(seq_list *const s_list,
+                        const int location)
 {
         if (s_list == NULL)
                 return false;
@@ -139,10 +133,9 @@ delete_list_element(seq_list *const s_list,
         return true;
 }
 
-bool
-fetch_list_element(seq_list *const s_list,
-                   void *element,
-                   const int location)
+bool fetch_list_element(seq_list *const s_list,
+                        void *element,
+                        const int location)
 {
         if (s_list == NULL)
                 return false;
@@ -155,8 +148,7 @@ fetch_list_element(seq_list *const s_list,
         return true;
 }
 
-void
-destory_list(seq_list *const s_list)
+void destory_list(seq_list *const s_list)
 {
         if (s_list != NULL) {
                 if (s_list->data != NULL)
