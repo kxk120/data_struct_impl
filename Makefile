@@ -1,19 +1,20 @@
+.PHONY: all compile clean
+
 OBJDIR	:= obj
 CC 	:= gcc
 MAKE	:= make
-CFLAGS	:= -fPIC -shared -Wall
+CFLAGS	:= -fPIC -Wall
+CFLAGS	+= -g
 
 # export above var.
 export
 
 # Get all subdir name that depth is 1, except $(exclude_dirs)
-subdir = $(filter-out $(1),$(basename $(patsubst ./%,%,$(shell find . -maxdepth 1 -type d))))
-#subdir  = $(1)
+include common.mk
 
 exclude_dirs 	 := unit_test obj
 ALL_COMPILE_DIRS := $(call subdir,$(exclude_dirs))
 
-.PHONY: all compile clean clean_dirs debug
 
 all : compile
 	$(MAKE) -C $(OBJDIR)
@@ -27,9 +28,3 @@ CLEAN_DIRS	:= $(call subdir,$(exclude_dirs))
 
 clean:
 	for dir in $(CLEAN_DIRS);do $(MAKE) -C $$dir clean;done
-debug:
-	@echo $(shell find . -maxdepth 1 -type d)
-	@echo $(basename $(patsubst ./%,%,$(shell find . -maxdepth 1 -type d)))
-	@echo $(patsubst /%,%,$(basename $(patsubst .%,%,$(shell find . -maxdepth 1 -type d))))
-	@echo $(filter-out $(exclude_dirs),$(basename $(patsubst ./%,%,$(shell find . -maxdepth 1 -type d))))
-	@echo $(call subdir,unit_test)
