@@ -16,3 +16,7 @@
 *.exe
 *.out
 *.app
+
+# Unit test result file(.xml)
+*.xml
+run_test_project
