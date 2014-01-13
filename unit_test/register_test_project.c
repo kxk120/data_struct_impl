@@ -28,13 +28,16 @@ int main(void)
 
         /* Add all suites to registry */
         add_all_suites();
+#if 0
+        CU_console_run_tests();
 
+#else   /* 自动化测试 */
         CU_set_output_filename("data_struct_impl");
         CU_list_tests_to_file();
 
         /* Run tests and generate result xml file(data_struct_impl-Result.xml) */
         CU_automated_run_tests();
-
+#endif
         CU_cleanup_registry();
 
         return 0;
