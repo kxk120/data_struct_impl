@@ -16,7 +16,7 @@ typedef struct {
 #define ELEMENT_NUM_MAX (4096)
 
 /* Export function */
-extern bool init_list(seq_list *s, const int);
+extern seq_list* init_list(const int);
 extern int  get_list_len(seq_list *const);
 extern void cleanup_list(seq_list *const);
 extern bool insert_list_element(seq_list *const, const void *const, const int);

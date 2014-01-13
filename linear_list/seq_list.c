@@ -23,26 +23,40 @@
  * 7. Destory list.             O(1)
  */
 
-bool init_list( seq_list *s_list,
-                const int element_size)
+seq_list* init_list(const int element_size)
 {
-        s_list = (seq_list *) malloc(sizeof(seq_list));
-        if (s_list == NULL)
-                return false;
+        /**
+         * 修正单元测试case 1和3的BUG.
+         * case 1:对element_size做判断即可.
+         * case 3:可谓是新手使用指针做参数的常见错误!
+         *        用指针做参数,确实可以修改,但是修改后的地址是不能
+         *        传回去的,因为参数属于局部变量了...
+         *        将参数取消,改为返回值的方法进行修正.
+         */
+        if (element_size <= 0)
+                return NULL;
+
+        seq_list *ps_list = (seq_list *) malloc(sizeof(seq_list));
+        if (ps_list == NULL)
+                return NULL;
 
         /** 
          * 始终为data域分配固定元素个数的内存
          * 当然,具体多大还要看单个元素的大小.
+         * 如果失败,要释放seq_list的内存.
          */
-        s_list->data = (unsigned char *) malloc(ELEMENT_NUM_MAX * element_size);
-        if (s_list->data == NULL)
-                return false;
+        ps_list->data = (unsigned char *) malloc(ELEMENT_NUM_MAX * element_size);
+        if (ps_list->data == NULL) {
+                free(ps_list);
+                ps_list = NULL;
+                return NULL;
+        }
 
-        memset(s_list->data, 0, ELEMENT_NUM_MAX * element_size);
-        s_list->element_size = element_size;
-        s_list->length = 0;
+        memset(ps_list->data, 0, ELEMENT_NUM_MAX * element_size);
+        ps_list->element_size = element_size;
+        ps_list->length = 0;
 
-        return true;
+        return ps_list;
 }
 
 int get_list_len(seq_list *const s_list)
