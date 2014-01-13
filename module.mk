@@ -1,7 +1,8 @@
-#
-# This file will be included by all subdirectory Makefile as rule.
-# @EXCEPT : unit_test and obj directory
-#
+######################################################
+# 几乎所有子目录的模块都以该文件为基础.
+# 例外 : unit_test(实际上unit_test的子目录也有包含该文
+# 件的Makefile)和obj目录.
+######################################################
 
 .PHONY:all move clean
 

@@ -1,11 +1,11 @@
-#################################################
-# This file include some common var.
-#################################################
+#####################################################
+# 该文件包含一些具有通用功能的变量, 可供call函数调用.
+#####################################################
 
 # 
-# VAR	: subdir
-# ACTION: get all subdirctory name except all specified by user.
-# USAGE :
+# 变量名: subdir
+# 动作  : 取得所有子目录的名字(被指定不包含的目录除外)
+# 用法  :
 # 	include common.mk
 # 	VAR_NAME = $(call subdir, exclude dir)
 #

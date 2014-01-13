@@ -1,10 +1,10 @@
 /**
- * The whole test project entry. There is mainly 2 things to do.
- * 1. Add all suites to the test registry.
- * 2. Start test and generate result file to "result" folder.
+ * 该文件是整个测试工程的入口, 它主要完成两件工作.
+ * 1. 添加所有测试suite到测试registry中.
+ * 2. 开始运行test并生成结果文件.
  *
- * Author : kongxiangkun
- * Date   : 2014.01.10
+ * 作者 : 孔祥堃
+ * 日期 : 2014.01.10
  */
 
 #include <stdio.h>

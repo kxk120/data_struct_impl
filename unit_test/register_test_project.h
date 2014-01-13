@@ -4,10 +4,11 @@
 #include "CUnit/Automated.h"
 
 /**
- * If you want to add a suite, you should do:
- * Step 1. Add a header file that is your one of data struct implementation. Like below Step 1.
- *         There is declaration of adding suites function.
- * Step 2. Add a adding suites function to array. Like below Step 2.
+ * 所有测试suite只需要暴露一个接口给主注册函数,那就是添加suite的函数
+ *
+ * 添加测试suite的步骤:
+ * 1. 添加对应suite的头文件, 该头文件可以只包含添加suite的函数.
+ * 2. 在Step 2中的函数指针数组中添加步骤1中的函数.
  */ 
 
 /* Step 1 */
@@ -17,7 +18,10 @@
 /* Step 2 */
 static void (*add_suites_func[])(void) = {
         add_seq_list_suite,
-        /* Add function pointer here */
+        /** 
+         * !!注意!! 在这里添加函数, 要保证添加的函数的返回
+         * 值和参数都是void 
+         **/
 };
 
 #endif /* REGISTER_TEST_PROJECT_H_ */

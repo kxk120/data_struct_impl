@@ -1,12 +1,12 @@
 #
-# This file is for debug Makefile. It can print var value in makefile.
-# I must be thankful to chenhao(陈皓) who is <<跟我一起写Makefile>>'s author
-# to provide the method for debug.
+# 该文件是具有调试功能的Makefile,它能够打印出Makefile中的变量值.
+# 该文件的内容完全是 陈皓(<<跟我一起写Makefile>>的作者) 所做.
+# 非常感谢!
 #
-# Usage:
+# 用法:
 # make -f DEBUG_MAKEFILE -f vars.mk VAR
 #
-# or if you want more information:
+# 如果你向获得变量更多的信息:
 # make -f DEBUG_MAKEFILE -f vars.mk d-VAR
 #
 

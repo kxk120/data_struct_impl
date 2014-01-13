@@ -3,14 +3,14 @@
 
 #include "CUnit/CUError.h"
 /**
- * When registry a suite, error code must be one of below:
+ * 当添加一个suite出错时,返回的错误码一定是以下所列的一种:
  * CUE_SUCCESS
  * CUE_NOREGISTRY
  * CUE_NO_SUITENAME
  * CUE_DUP_SUITE
  * CUE_NOMEMORY
  * 
- * Refer to http://cunit.sourceforge.net/doc/managing_tests.html
+ * 具体请参考http://cunit.sourceforge.net/doc/managing_tests.html
  */
 static void report_suite_reg_error(const CU_ErrorCode error, const char *message)
 {
