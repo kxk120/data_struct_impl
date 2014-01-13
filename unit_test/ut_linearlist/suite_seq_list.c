@@ -6,6 +6,7 @@
 /* 包含被测试函数的头文件 */
 #include "../../linear_list/seq_list.h"
 
+static seq_list *ps_list = NULL;
 
 /**
  * init_lsit原型: 
@@ -17,7 +18,6 @@
  */ 
 static void test_init_list(void) 
 {
-        seq_list *ps_list = NULL;
         int element_size = 0;
 
         /* case 1: element_size = 0 */
@@ -81,6 +81,7 @@ static int init_suite(void)
 
 static int cleanup_suite(void)
 {
+        destory_list(ps_list);
         return CUE_SUCCESS;
 }
 
