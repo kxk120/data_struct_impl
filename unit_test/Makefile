@@ -16,7 +16,7 @@ SUBDIRS := $(call subdir, $(exclude_dir))
 .PHONY: all compile clean exe
 
 all : compile
-	$(CC) $(INC) -c register_test_project.c -o obj/register_test_project.o
+	$(CC) $(INC) $(CFLAGS) -c register_test_project.c -o obj/register_test_project.o
 	$(MAKE) -C $(OBJDIR)
 
 compile : $(SUBDIRS)
@@ -27,4 +27,4 @@ clean:
 	$(RM) result/data_struct_impl* result/run_test_project
 
 exe:
-	$(MAKE) -C $(OBJDIR) exe
+	cd result && ./run_test_project
