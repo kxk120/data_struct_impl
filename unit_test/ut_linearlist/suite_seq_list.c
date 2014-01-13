@@ -3,12 +3,39 @@
  */
 #include "suite_seq_list.h"
 
-/* Tested function's header file */
+/* 包含被测试函数的头文件 */
 #include "../../linear_list/seq_list.h"
 
 
+/**
+ * init_lsit原型: 
+ *      bool init_list(seq_list *s_list, const int element_size)
+ *
+ * init_list函数检查说明:
+ *      1. element_size的有效值是正整数.
+ *      2. 当element_size输入无效参数时, 返回值为NULL.
+ */ 
 static void test_init_list(void) 
 {
+        seq_list *ps_list = NULL;
+        int element_size = 0;
+
+        /* case 1: element_size = 0 */
+        element_size = 0;
+        ps_list = init_list(element_size);
+        CU_ASSERT_PTR_NULL(ps_list);
+
+        /* case 2: element_size < 0 */ 
+        element_size = -1;
+        ps_list = init_list(element_size);
+        CU_ASSERT_PTR_NULL(ps_list);
+
+        /* case 3: element_size > 0 */
+        element_size = 1;
+        ps_list = init_list(element_size);
+        CU_ASSERT_PTR_NOT_NULL(ps_list);
+        CU_ASSERT_EQUAL(ps_list->element_size, element_size);
+        CU_ASSERT_EQUAL(ps_list->length, 0);
 }
 
 static void test_get_list_len(void)
@@ -49,10 +76,12 @@ static CU_TestInfo test_cases[] = {
 
 static int init_suite(void)
 {
+        return CUE_SUCCESS;
 }
 
 static int cleanup_suite(void)
 {
+        return CUE_SUCCESS;
 }
 
 static CU_SuiteInfo suites[] = {
