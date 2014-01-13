@@ -2,6 +2,7 @@
 #define REGISTER_TEST_PROJECT_H_
 
 #include "CUnit/Automated.h"
+#include "CUnit/Console.h"
 
 /**
  * 所有测试suite只需要暴露一个接口给主注册函数,那就是添加suite的函数
@@ -22,6 +23,9 @@ static void (*add_suites_func[])(void) = {
          * !!注意!! 在这里添加函数, 要保证添加的函数的返回
          * 值和参数都是void 
          **/
+
+        /* 请不要改变或删除NULL, 它必须要作为最后一个值. */
+        NULL,
 };
 
 #endif /* REGISTER_TEST_PROJECT_H_ */
