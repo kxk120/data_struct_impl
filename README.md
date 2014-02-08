@@ -32,8 +32,6 @@ data_struct_impl
 
     1.2.5 循环双向链表
     
-    循环双向链表书中未描述，但我在读Linux Kernel Development 一书时，对内核
-    实现的这个基本的数据结构有很深的印象，因此也想要自己实现一下。
 
 2.栈与队列（目录：stack_queue）
 
